@@ -114,6 +114,21 @@ It *does* catch the most common runtime mistakes that prompt-injected agents mak
 - [Tool Poisoning Attacks — Invariant Labs](https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks)
 - [MITRE ATLAS](https://atlas.mitre.org/)
 
+## Related tools
+
+Part of a **detect → inventory → test → generate → defend** pipeline for AI-agent security:
+
+| Layer | Tool | Role |
+|---|---|---|
+| Detect | [`@dj_abstract/mcp-audit`](https://github.com/abregoarthur-star/mcp-audit) | Static audit of MCP server definitions |
+| Detect | [`mcp-audit-sweep`](https://github.com/abregoarthur-star/mcp-audit-sweep) | Reproducible sweep of public MCP servers |
+| Inventory | [`@dj_abstract/agent-capability-inventory`](https://github.com/abregoarthur-star/agent-capability-inventory) | Fleet-wide tool catalog with data-sensitivity tags |
+| Test | [`prompt-eval`](https://github.com/abregoarthur-star/prompt-eval) | Runtime prompt-injection eval harness |
+| Generate | [`@dj_abstract/prompt-genesis`](https://github.com/abregoarthur-star/prompt-genesis) | Attack corpus generator — produces the hardened attacks that prompt-eval validates defenses against |
+| Defend | **agent-firewall** *(you are here)* | Call-time defensive middleware |
+
+The full loop: `mcp-audit` catches design-time risks in the server surface; `agent-capability-inventory` maps what each tool touches; `prompt-genesis` generates adversarial attacks; `prompt-eval` measures how well the system resists them; `agent-firewall` catches what gets through at call time.
+
 ## License
 
 MIT — see [LICENSE](./LICENSE).
