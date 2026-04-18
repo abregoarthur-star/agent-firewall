@@ -1,0 +1,48 @@
+{
+  "name": "@dj_abstract/agent-firewall",
+  "version": "0.1.0",
+  "description": "Runtime defensive middleware for AI agent tool calls. Detects, logs, and blocks suspicious patterns at call time — exfiltration trails, dangerous shell, sensitive path writes, the lethal trifecta in motion.",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./adapters/anthropic-sdk": "./src/adapters/anthropic-sdk.js",
+    "./adapters/agent-sdk": "./src/adapters/agent-sdk.js"
+  },
+  "files": [
+    "src/",
+    "bin/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test 'test/**/*.test.js'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abregoarthur-star/agent-firewall.git"
+  },
+  "bugs": {
+    "url": "https://github.com/abregoarthur-star/agent-firewall/issues"
+  },
+  "homepage": "https://github.com/abregoarthur-star/agent-firewall#readme",
+  "keywords": [
+    "ai-security",
+    "agent-security",
+    "llm-security",
+    "tool-use",
+    "prompt-injection",
+    "guardrails",
+    "middleware",
+    "anthropic",
+    "mcp"
+  ],
+  "author": "Arthur Abrego",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@anthropic-ai/claude-agent-sdk": "^0.2.114"
+  }
+}
